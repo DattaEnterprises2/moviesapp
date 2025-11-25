@@ -22,11 +22,14 @@ jobs:
           npm install
           npm run build
 
+      - name: List build folder (debug)
+        run: ls -R build
+
       - name: Deploy to Server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "build/*"
+          source: "build/**"
           target: "/var/www/react-app/"
