@@ -28,6 +28,7 @@ jobs:
       - name: Deploy to Server
         uses: webfactory/ssh-agent@v0.9.1
         with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
